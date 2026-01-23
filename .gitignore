@@ -1,0 +1,6 @@
+.venv
+app
+frontend
+requirements.txt
+.env.example
+infy.ipynb
