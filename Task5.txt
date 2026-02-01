@@ -211,4 +211,4 @@ if st.session_state.segments:
                 "Transcript",
                 value=st.session_state.transcript,
                 height=600
-            )
+            ) ..
