@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Segments</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Podcast Segments</h1>
+
+<audio id="player" controls></audio>
+
+<div id="segments"></div>
+<div id="transcript"></div>
+
+<script>
+const audio = document.getElementById("player");
+audio.src = "/audio/" + "";
+
+fetch("/data")
+.then(r => r.json())
+.then(data => {
+    const segDiv = document.getElementById("segments");
+    const textDiv = document.getElementById("transcript");
+
+    data.forEach(s => {
+        const d = document.createElement("div");
+        d.innerHTML = `
+            <h3>${s.title}</h3>
+            <p>${s.summary}</p>
+            <button>Play</button>
+        `;
+        d.querySelector("button").onclick = () => {
+            audio.currentTime = s.start;
+            audio.play();
+            textDiv.innerHTML = s.text;
+        };
+        segDiv.appendChild(d);
+    });
+});
+</script>
+
+</body>
+</html>
