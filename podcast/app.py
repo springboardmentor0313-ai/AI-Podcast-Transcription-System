@@ -3,7 +3,6 @@ from __future__ import annotations
 import os
 import re
 import tempfile
-import math
 import json
 import shutil
 from collections import Counter
@@ -129,25 +128,6 @@ def segment_chunks(chunks: list[dict], target_segments: int = 5) -> list[dict]:
         )
 
     return out
-
-
-def infer_target_segments(chunks: list[dict], max_segments: int = 8) -> int:
-    """Infer topic count from audio/transcript density, capped by max_segments."""
-    if not chunks:
-        return 1
-
-    start = chunks[0]["start"]
-    end = chunks[-1]["end"]
-    duration_sec = max(1.0, end - start)
-    duration_min = duration_sec / 60.0
-
-    # Heuristic 1: roughly one topic per ~4 minutes of audio.
-    duration_based = math.ceil(duration_min / 4.0)
-    # Heuristic 2: enough buckets to avoid overpacking chunk text.
-    chunk_based = math.ceil(len(chunks) / 8.0)
-
-    inferred = max(1, max(duration_based, chunk_based))
-    return min(max_segments, inferred)
 
 
 def transcribe(audio_path: str) -> tuple[list[dict], str]:
