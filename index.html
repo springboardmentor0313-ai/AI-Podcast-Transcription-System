@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Podcast Transcription</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="upload-card">
+  <h1>Podcast Transcription</h1>
+  <p>Upload an audio file to generate timestamps and segmented text</p>
+
+  <input type="file" id="audioFile">
+  <button onclick="uploadAudio()">Upload & Transcribe</button>
+  <p id="status"></p>
+</div>
+
+<div class="main" id="main" style="display:none;">
+  <audio id="audio" controls></audio>
+
+  <div class="content">
+    <div class="segments" id="segments"></div>
+    <div class="transcript" id="transcript">
+      <h3>Transcript</h3>
+      <p id="segmentText"></p>
+    </div>
+  </div>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

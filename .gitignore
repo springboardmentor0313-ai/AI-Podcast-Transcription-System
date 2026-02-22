@@ -4,3 +4,30 @@ frontend
 requirements.txt
 .env.example
 infy.ipynb
+venv/
+__pycache__/
+*.pyc
+hf_cache/
+temp/
+chunks/
+final_output/
+*.wav
+*.mp3
+*.json
+# Ignore models
+vosk-model-small-en-us-0.15/
+whisper/
+models/
+
+# Ignore audio files
+audio/
+*.wav
+*.mp3
+# Ignore outputs
+output/
+*.json
+*.txt
+
+# Python cache
+__pycache__/
+*.pyc
