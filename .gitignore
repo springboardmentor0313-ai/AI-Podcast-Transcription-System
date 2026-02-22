@@ -1,3 +1,9 @@
+.venv
+app
+frontend
+requirements.txt
+.env.example
+infy.ipynb
 venv/
 __pycache__/
 *.pyc
